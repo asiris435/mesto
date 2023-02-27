@@ -1,0 +1,15 @@
+.root__section-header {
+    padding: 45px 200px 0;
+}
+
+@media screen and (max-width: 899px) {
+    .root__section-header {
+        padding: 28px 100px 0;
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .root__section-header {
+        padding: 28px 0 0 27px;
+    }
+}
