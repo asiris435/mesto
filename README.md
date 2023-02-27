@@ -1,5 +1,5 @@
-# __Russian-travel__
-https://asiris435.github.io/russian-travel/
+# __Mesto__
+https://asiris435.github.io/mesto/
 >## Цель проекта Russian-travel: 
 >#### _Рассказать о туристических возможностях России и привлекательности её для туристов._   
 
