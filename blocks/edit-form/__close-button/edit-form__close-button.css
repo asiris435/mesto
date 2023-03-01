@@ -1,0 +1,14 @@
+.edit-form__close-button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    padding: 0;
+    align-self: end;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.edit-form__close-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
