@@ -1,12 +1,15 @@
-.profile__subtitle {
+.profile__job {
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     margin: 0;
 }
 
 @media screen and (max-width: 1159px) {
-    .profile__subtitle {
+    .profile__job {
         font-size: 14px;
         line-height: 17px;
         padding-top: 14px;
@@ -14,7 +17,7 @@
 }
 
 @media screen and (max-width: 899px) {
-    .profile__subtitle {
+    .profile__job {
         font-size: 14px;
         line-height: 17px;
         padding-bottom: 36px;
