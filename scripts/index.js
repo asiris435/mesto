@@ -1,11 +1,11 @@
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const nameInput = popupElement.querySelector('.popup__input-name');
-const jobInput = popupElement.querySelector('.popup__input-job');
+const nameInput = popupElement.querySelector('.popup__input_name');
+const jobInput = popupElement.querySelector('.popup__input_job');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
-const formElement = popupElement.querySelector('.popup__submit-button');
+const formElement = popupElement.querySelector('.popup__container');
 
 const openPopup = function () {
     popupElement.classList.add('popup_opened');
@@ -28,14 +28,3 @@ const handleFormSubmit = function (evt) {
 }
  
 formElement.addEventListener('submit', handleFormSubmit);
-
-console.log(formElement);
-/*
-const likeButton = document.querySelectorAll('.elements__like-button');
-
-const toggleLikeButton = function () {
-    
-}
-
-likeButton.addEventListener('click', toggleLikeButton);*/
-
