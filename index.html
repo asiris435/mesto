@@ -7,86 +7,84 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
-<body>
-    <div class="page">
-        <div class="root">
-            <header class="header root__section-header">
-                <img class="header__logo" src="./images/Logo.svg" alt="изображение логотипа">
-            </header>
-            <main class="content">
-                <section class="profile content__section-profile">
-                    <img class="profile__avatar" src="./images/avatar.jpg" alt="изображение Жак-Ив Кусто">
-                    <div class="profile__info">
-                        <div class="profile__info-groupe">
-                            <h1 class="profile__name">Жак-Ив Кусто</h1> 
-                            <button class="profile__edit-button"></button>
-                        </div>
-                        <p class="profile__job">Исследователь океана</p>
+<body class="page">
+    <div class="root">
+        <header class="header root__section-header">
+            <img class="header__logo" src="./images/Logo.svg" alt="изображение логотипа">
+        </header>
+        <main class="content">
+            <section class="profile content__section-profile">
+                <img class="profile__avatar" src="./images/avatar.jpg" alt="изображение Жак-Ив Кусто">
+                <div class="profile__info">
+                    <div class="profile__info-groupe">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1> 
+                        <button aria-label="Edit profile" type="button" class="profile__edit-button"></button>
                     </div>
-                    <button class="profile__add-button"></button>
-                </section>
-                <section aria-label="photo gallery" class="elements">
-                    <ul class="elements__list">
-                        <li>
-                            <img class="elements__item" src="./images/karachaevsk.jpg" alt="изображение собора">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Карачаево-Черкессия</h2>
-                                <button class="elements__like-button"></button>
-                            </div>
-                        </li>
-                        <li>
-                            <img class="elements__item" src="./images/Karelia.jpg" alt="изображение водопада в Карелии">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Карелия</h2>
-                                <button class="elements__like-button"></button>
-                            </div>
-                        </li>
-                        <li>
-                            <img class="elements__item" src="./images/Tolbachik-volcano.jpg" alt="изображение вулкана Толбачик">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Вулкан Толбачик</h2>
-                                <button class="elements__like-button"></button>
-                            </div>
-                        </li>
-                        <li>
-                            <img class="elements__item" src="./images/Black-sea.jpg" alt="изображение Чёрного моря">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Чёрное море</h2>
-                                <button class="elements__like-button"></button>
-                            </div>
-                        </li>
-                        <li>
-                            <img class="elements__item" src="./images/elbrus.png" alt="изображение горы Эльбрус">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Гора Эльбрус</h2>
-                                <button class="elements__like-button"></button>
-                            </div>
-                        </li>
-                        <li>
-                            <img class="elements__item" src="./images/dombai.png" alt="изображение горы Домбай-Ульген">
-                            <div class="elements__groupe">
-                                <h2 class="elements__title">Домбай</h2>
-                                <button class="elements__like-button"></button>
-                            </div> 
-                        </li>
-                    </ul>
-                </section>
-            </main>
-            <footer class="footer root__section-footer">
-                <p class="footer__copyright">&copy; 2023. Mesto Russia</p>
-            </footer>
-            <section aria-label="form" class="popup">
-                <form class="popup__container">
-                    <p class="popup__title">Редактировать профиль</p>
-                    <button class="popup__close"></button>
-                    <div class="popup__input">
-                        <input type="text" value="Имя" class="popup__input popup__input_name">
-                        <input type="text" value="О себе" class="popup__input popup__input_job">
-                        <button type="submit" class="popup__input popup__input_submit-button">Сохранить</button>
-                    </div>
-                </form>
+                    <p class="profile__job">Исследователь океана</p>
+                </div>
+                <button aria-label="Add a foto" type="button" class="profile__add-button"></button>
             </section>
-        </div>
+            <section aria-label="photo gallery" class="elements">
+                <ul class="elements__list">
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/karachaevsk.jpg" alt="изображение собора">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Карачаево-Черкессия</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/Karelia.jpg" alt="изображение водопада в Карелии">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Карелия</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/Tolbachik-volcano.jpg" alt="изображение вулкана Толбачик">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Вулкан Толбачик</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/Black-sea.jpg" alt="изображение Чёрного моря">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Чёрное море</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/elbrus.png" alt="изображение горы Эльбрус">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Гора Эльбрус</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="elements__card">
+                        <img class="elements__item" src="./images/dombai.png" alt="изображение горы Домбай-Ульген">
+                        <div class="elements__groupe">
+                            <h2 class="elements__title">Домбай</h2>
+                            <button aria-label="Like" type="button" class="elements__like-button"></button>
+                        </div> 
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer root__section-footer">
+            <p class="footer__copyright">&copy; 2023. Mesto Russia</p>
+        </footer>
+        <section aria-label="form" class="popup">
+            <div class="popup__container">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <button aria-label="Close" type="button" class="popup__close"></button>
+                <form name="form input" class="popup__input">
+                    <input name="input name" type="text" value="Имя" class="popup__input-text popup__input-text_type_name">
+                    <input name="input job" type="text" value="О себе" class="popup__input-text popup__input-text_type_job">
+                    <button type="submit" class="popup__submit-button">Сохранить</button>
+                </form>
+            </div>
+        </section>
     </div>
     <script src="./scripts/index.js"></script>
 </body>

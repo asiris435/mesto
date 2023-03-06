@@ -5,6 +5,7 @@
 
 @media screen and (max-width: 539px) {
     .header {
-        padding: 28px 0 28px 27px;
+        padding: 28px 27px 28px;
+        box-sizing: border-box;
     }
 }
