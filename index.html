@@ -25,59 +25,16 @@
                 <button aria-label="Add a foto" type="button" class="profile__add-button"></button>
             </section>
             <section aria-label="photo gallery" class="elements">
-                <ul class="elements__list">
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/karachaevsk.jpg" alt="изображение собора">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Карачаево-Черкессия</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/Karelia.jpg" alt="изображение водопада в Карелии">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Карелия</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/Tolbachik-volcano.jpg" alt="изображение вулкана Толбачик">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Вулкан Толбачик</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/Black-sea.jpg" alt="изображение Чёрного моря">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Чёрное море</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/elbrus.png" alt="изображение горы Эльбрус">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Гора Эльбрус</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div>
-                    </li>
-                    <li class="elements__card">
-                        <img class="elements__item" src="./images/dombai.png" alt="изображение горы Домбай-Ульген">
-                        <div class="elements__groupe">
-                            <h2 class="elements__title">Домбай</h2>
-                            <button aria-label="Like" type="button" class="elements__like-button"></button>
-                        </div> 
-                    </li>
-                </ul>
+                <ul class="elements__list"></ul>
             </section>
         </main>
         <footer class="footer root__section-footer">
             <p class="footer__copyright">&copy; 2023. Mesto Russia</p>
         </footer>
-        <section aria-label="form" class="popup">
-            <div class="popup__container">
+        <section aria-label="form" class="popup popup__form_type_profile">
+            <div class="popup__container popup__container_type_profile">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <button aria-label="Close" type="button" class="popup__close"></button>
+                <button aria-label="Close" type="button" class="popup__close popup__close_type_profile"></button>
                 <form name="form input" class="popup__input">
                     <input name="input name" type="text" value="Имя" class="popup__input-text popup__input-text_type_name">
                     <input name="input job" type="text" value="О себе" class="popup__input-text popup__input-text_type_job">
@@ -85,7 +42,35 @@
                 </form>
             </div>
         </section>
+        <section aria-label="form-add-photo" class="popup popup__form_type_add-photo">
+            <div class="popup__container popup__container_type_add-photo">
+                <h3 class="popup__title">Новое место</h3>
+                <button aria-label="Close" type="button" class="popup__close popup__close_type_add-photo"></button>
+                <form name="form input" class="popup__input">
+                    <input name="input place" type="text" value="Название" class="popup__input-text popup__input-text_type_place">
+                    <input name="input link" type="text" value="Ссылка на картинку" class="popup__input-text popup__input-text_type_link">
+                    <button type="submit" class="popup__submit-button">Создать</button>
+                </form>
+            </div>
+        </section>
+        <section aria-label="Place-image" class="popup popup__place_type_image popup__background_theme_dark">
+            <div class="popup__place-image">
+                <img class="popup__place-item" src="" alt="">
+                <h3 class="popup__place-title"></h3>
+                <button aria-label="Close" type="button" class="popup__close popup__close_type_place-image"></button>
+            </div>
+        </section>
     </div>
+    <template class="card-template">
+        <li class="elements__card">
+            <img class="elements__item" src="" alt="">
+            <button aria-label="Delet" type="button" class="elements__delet-button"></button>
+            <div class="elements__groupe">
+                <h2 class="elements__title"></h2>
+                <button aria-label="Like" type="button" class="elements__like-button"></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
