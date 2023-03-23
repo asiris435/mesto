@@ -57,18 +57,18 @@ function createCard (element) {
 
 initialCards.forEach (function (element)  {
   const card = createCard (element);
-  renderCard(card);
+  renderCard(elementsList, card);
 });
 
-function renderCard (card) {
+function renderCard (elementsList, card) {
   elementsList.prepend(card);
 }
 
 function handleFormAddPhotoSubmit (event) {
   event.preventDefault();
-  const newCard = {name:placeInput.value, link:linkInput.value, alt:linkInput.value};
+  const newCard = {name:placeInput.value, link:linkInput.value, alt:placeInput.value};
   const card = createCard(newCard);
-  renderCard (card);
+  renderCard (elementsList, card);
   closePopup(popupElAddPhoto);
   event.target.reset();
 }
@@ -88,7 +88,7 @@ function setEventListeners (clonCardElement) {
   clonCardElement.querySelector('.elements__like-button').addEventListener('click', handleLikeClick);
 }
 
-function openPopupElenent () {
+function openPopupElProfile () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupElProfile);
@@ -98,7 +98,7 @@ function openPopupElAddPhoto () {
   openPopup(popupElAddPhoto);
 }
 
-function closePopupElement () {
+function closePopupElProfile () {
   closePopup(popupElProfile);
 }
 
@@ -111,9 +111,9 @@ function closePopupElPlaceImg () {
 }
 
 
-popupOpenBtnElement.addEventListener('click', openPopupElenent);
+popupOpenBtnElement.addEventListener('click', openPopupElProfile);
 popupOpenBtnElAddPhoto.addEventListener('click', openPopupElAddPhoto);
-popupCloseBtnElement.addEventListener('click', closePopupElement);
+popupCloseBtnElement.addEventListener('click', closePopupElProfile);
 popupCloseBtnElAddPhoto.addEventListener('click', closePopupElAddPhoto);
 popupCloseBtnElPlaceImg.addEventListener('click', closePopupElPlaceImg);
 formElProfile.addEventListener('submit', handleFormProfileSubmit);
