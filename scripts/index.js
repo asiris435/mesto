@@ -115,7 +115,7 @@ function closePopupElProfile () {
   closePopup(popupElProfile);
 }
 
-function closePopupElAddPhoto (event) {
+function closePopupElAddPhoto () {
   closePopup(popupElAddPhoto);
 }
 
