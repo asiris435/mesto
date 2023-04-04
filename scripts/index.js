@@ -21,14 +21,21 @@ const placeInput = popupElAddPhoto.querySelector('.popup__input-text_type_place'
 const linkInput = popupElAddPhoto.querySelector('.popup__input-text_type_link');
 const placeImgOpen = popupElPlaceImg.querySelector('.popup__place-item');
 const placeTextOpen = popupElPlaceImg.querySelector('.popup__place-title');
+const submitButtonFormProfile = formElProfile.querySelector('.popup__submit-button');
+const submitButtonFormAddPhoto = formElAddPhoto.querySelector('.popup__submit-button');
+const inputListFormProfile = formElProfile.querySelectorAll('.popup__input-text');
+const inputListFormAddPhoto = formElAddPhoto.querySelectorAll('.popup__input-text');
+
 
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
 }
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
 }
 
 function handleFormProfileSubmit (event) {
@@ -89,12 +96,18 @@ function setEventListeners (clonCardElement) {
 }
 
 function openPopupElProfile () {
+  resetPopupError(formElProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
+  toggleButtonState(inputListFormProfile, submitButtonFormProfile, validationConfig.inactiveButtonClass);
   openPopup(popupElProfile);
 }
 
 function openPopupElAddPhoto () {
+  resetPopupError(formElAddPhoto);
+  placeInput.value = '';
+  linkInput.value = '';
+  toggleButtonState(inputListFormAddPhoto, submitButtonFormAddPhoto, validationConfig.inactiveButtonClass);
   openPopup(popupElAddPhoto);
 }
 
@@ -102,12 +115,25 @@ function closePopupElProfile () {
   closePopup(popupElProfile);
 }
 
-function closePopupElAddPhoto () {
+function closePopupElAddPhoto (event) {
   closePopup(popupElAddPhoto);
 }
 
 function closePopupElPlaceImg () {
   closePopup(popupElPlaceImg);
+}
+
+function closePopupClickOverlay (event) {
+  if (event.target === event.currentTarget) {
+    closePopup (event.currentTarget);
+  }
+}
+
+function closePopupEscape (event) {
+  if (event.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened);
+  }
 }
 
 
@@ -118,9 +144,9 @@ popupCloseBtnElAddPhoto.addEventListener('click', closePopupElAddPhoto);
 popupCloseBtnElPlaceImg.addEventListener('click', closePopupElPlaceImg);
 formElProfile.addEventListener('submit', handleFormProfileSubmit);
 formElAddPhoto.addEventListener('submit', handleFormAddPhotoSubmit);
-
-
-
+popupList.forEach(function (element) {
+  element.addEventListener('click', closePopupClickOverlay)
+});
 
 
 

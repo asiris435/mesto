@@ -1,16 +1,12 @@
 .popup__input {
     display: grid;
-    grid-template-rows: 38px 38px 16px 50px;
+    grid-template-rows: 30px 24px 27px 24px 6px 50px;
     grid-template-areas: 
+    'none'
+    'none'
     'none'
     'none'
     '.'
     'button';
-    row-gap: 17px;
-}
-
-@media screen and (max-width: 539px) {
-    .popup__input {
-        grid-template-rows: 38px 38px 10px 46px; 
-    }
+    row-gap: 5px;
 }
