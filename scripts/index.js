@@ -139,15 +139,18 @@ function closePopupEscape (event) {
 
 popupOpenBtnElement.addEventListener('click', openPopupElProfile);
 popupOpenBtnElAddPhoto.addEventListener('click', openPopupElAddPhoto);
-popupCloseBtnElement.addEventListener('click', closePopupElProfile);
-popupCloseBtnElAddPhoto.addEventListener('click', closePopupElAddPhoto);
-popupCloseBtnElPlaceImg.addEventListener('click', closePopupElPlaceImg);
 formElProfile.addEventListener('submit', handleFormProfileSubmit);
 formElAddPhoto.addEventListener('submit', handleFormAddPhotoSubmit);
-popupList.forEach(function (element) {
-  element.addEventListener('click', closePopupClickOverlay)
+popupList.forEach(function (popup) {
+  popup.addEventListener('mousedown', function (event) {
+    if (event.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (event.target.classList.contains('popup__close')) {
+      closePopup(popup);
+    } 
+  });
 });
-
 
 
 
