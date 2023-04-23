@@ -30,3 +30,5 @@ const initialCards = [
       alt:  'изображение побережья озера Байкал'
     }
   ];
+
+  export default initialCards;
