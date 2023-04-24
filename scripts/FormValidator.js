@@ -51,7 +51,7 @@ export default class FormValidator {
         }
     }
   
-    _kitEventListeners () {
+    _setEventListeners () {
       this._formInputs.forEach(input => {
         input.addEventListener('input', () => {
             this._input = input;
@@ -62,10 +62,10 @@ export default class FormValidator {
     }
   
     enableValidation () {
-      this._kitEventListeners();
+      this._setEventListeners();
     }
   
-    resetPopupError () {
+    resetValidation () {
       this._formInputs.forEach(input => {
         this._input = input;
         this._currentInputErrorContainer = this._form.querySelector(`#${this._input.id}-error`);

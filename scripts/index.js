@@ -13,8 +13,8 @@ const nameInput = popupElProfile.querySelector('.popup__input-text_type_name');
 const jobInput = popupElProfile.querySelector('.popup__input-text_type_job');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
-const formElProfile = popupElProfile.querySelector('.popup__container_type_profile');
-const formElAddPhoto = popupElAddPhoto.querySelector('.popup__container_type_add-photo');
+const profileForm = document.forms['profile-form'];
+const cardForm = document.forms['card-form'];
 const placeInput = popupElAddPhoto.querySelector('.popup__input-text_type_place');
 const linkInput = popupElAddPhoto.querySelector('.popup__input-text_type_link');
 const placeImgOpen = popupElPlaceImg.querySelector('.popup__place-item');
@@ -83,16 +83,15 @@ function handleFormAddPhotoSubmit (event) {
 }
 
 function openPopupElProfile () {
-  popupElProfileValidator.resetPopupError();
+  popupElProfileValidator.resetValidation();
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
   openPopup(popupElProfile);
 }
 
 function openPopupElAddPhoto () {
-  popupElAddPhotoValidator.resetPopupError();
-  placeInput.value = '';
-  linkInput.value = '';
+  popupElAddPhotoValidator.resetValidation();
+  cardForm.reset();
   openPopup(popupElAddPhoto);
 }
 
@@ -108,12 +107,6 @@ function closePopupElPlaceImg () {
   closePopup(popupElPlaceImg);
 }
 
-function closePopupClickOverlay (event) {
-  if (event.target === event.currentTarget) {
-    closePopup (event.currentTarget);
-  }
-}
-
 function closePopupEscape (event) {
   if (event.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened')
@@ -124,8 +117,8 @@ function closePopupEscape (event) {
 
 popupOpenBtnElement.addEventListener('click', openPopupElProfile);
 popupOpenBtnElAddPhoto.addEventListener('click', openPopupElAddPhoto);
-formElProfile.addEventListener('submit', handleFormProfileSubmit);
-formElAddPhoto.addEventListener('submit', handleFormAddPhotoSubmit);
+profileForm.addEventListener('submit', handleFormProfileSubmit);
+cardForm.addEventListener('submit', handleFormAddPhotoSubmit);
 popupList.forEach(function (popup) {
   popup.addEventListener('mousedown', function (event) {
     if (event.target.classList.contains('popup_opened')) {
