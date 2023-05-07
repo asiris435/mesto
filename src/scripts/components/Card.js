@@ -1,11 +1,11 @@
 export default class Card {
-    constructor (cardData, templateSelector, openPopupElPlace) {
+    constructor (cardData, templateSelector, handleCardClick) {
       this._cardData = cardData;
-      this._name = cardData.name;
+      this._name = cardData.title;
       this._link = cardData.link;
       this._alt = cardData.alt;
       this._templateSelector = templateSelector;
-      this._openPopupElPlace = openPopupElPlace;
+      this._handleCardClick = handleCardClick;
     }
   
     _getTemplate () {
@@ -21,7 +21,7 @@ export default class Card {
     }
   
     _handleOpenPopupElPlace = () => {
-      this._openPopupElPlace(this._cardData);
+      this._handleCardClick(this._cardData);
     }
   
     _setEventListeners () {
