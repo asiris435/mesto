@@ -18,6 +18,7 @@ export default class Card {
   
     _handleDelet = () => {
       this._clonCardElement.remove();
+      this._clonCardElement = null;
     }
   
     _handleOpenPopupElPlace = () => {
