@@ -5,15 +5,19 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupCardDelete from '../components/PopupCardDelete.js';
 import {
   initialCards,
   popupOpenBtnElement,
   popupOpenBtnElAddPhoto,
+  popupOpenBtnElUpdateAvatar,
   templateSelector,
   elementsListSelector,
   popupImageSelector,
   popupProfileSelector,
   popupAddPhotoSelector,
+  popupUpdateAvatarSelector,
+  popupCardDeleteSelector,
   profileInfoConfig,
   validationConfig,
   formValidators
@@ -21,10 +25,16 @@ import {
 
 
 function createCard (element) {
-  const card = new Card (element, templateSelector, popupWithImage.open);
+  const card = new Card (element, templateSelector, popupWithImage.open, popupCardDelete.open);
   return card.generateCard();
 }
 
+
+const popupCardDelete = new PopupCardDelete (popupCardDeleteSelector, (element) => {
+  element.removeCard();
+  popupCardDelete.close();
+}); 
+popupCardDelete.setEventListeners();
 
 const popupWithImage = new PopupWithImage (popupImageSelector);
 popupWithImage.setEventListeners();
@@ -49,6 +59,13 @@ const popupAddPhoto = new PopupWithForm (popupAddPhotoSelector, (data) => {
 });
 popupAddPhoto.setEventListeners();
 
+const popupUpdateAvatar = new PopupWithForm (popupUpdateAvatarSelector, (data) => {
+  document.querySelector('.profile__avatar').src = data.updateAvatar;
+  popupUpdateAvatar.close();
+});
+popupUpdateAvatar.setEventListeners();
+
+
 Array.from(document.forms).forEach(item => {
   const form = new FormValidator (validationConfig, item);
   const name = item.name;
@@ -58,12 +75,17 @@ Array.from(document.forms).forEach(item => {
 
 
 popupOpenBtnElement.addEventListener('click', () => {
-  formValidators['profileForm'].resetValidation();
+  formValidators.profileForm.resetValidation();
   popupProfile.setInputValues(userInfo.getUserInfo());
   popupProfile.open();
 });
 
 popupOpenBtnElAddPhoto.addEventListener('click', () => {
-  formValidators['cardForm'].resetValidation();
+  formValidators.cardForm.resetValidation();
   popupAddPhoto.open();
 });
+
+popupOpenBtnElUpdateAvatar.addEventListener('click', () => {
+  formValidators.updateAvatar.resetValidation();
+  popupUpdateAvatar.open();
+})

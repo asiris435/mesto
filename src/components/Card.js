@@ -1,11 +1,12 @@
 export default class Card {
-    constructor (cardData, templateSelector, handleCardClick) {
+    constructor (cardData, templateSelector, handleCardClick, handleDeleteClick) {
       this._cardData = cardData;
       this._name = cardData.title;
       this._link = cardData.link;
       this._alt = cardData.alt;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
+      this._handleDeleteClick = handleDeleteClick;
     }
   
     _getTemplate () {
@@ -17,8 +18,7 @@ export default class Card {
     }
   
     _handleDelet = () => {
-      this._clonCardElement.remove();
-      this._clonCardElement = null;
+      this._handleDeleteClick(this);
     }
   
     _handleOpenPopupElPlace = () => {
@@ -31,6 +31,11 @@ export default class Card {
       this._imageElement.addEventListener('click', this._handleOpenPopupElPlace);
     }
   
+    removeCard () {
+      this._clonCardElement.remove();
+      this._clonCardElement = null;
+    }
+
     generateCard () {
       this._clonCardElement = this._getTemplate();
       this._imageElement = this._clonCardElement.querySelector('.elements__item');

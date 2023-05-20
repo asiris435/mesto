@@ -33,11 +33,14 @@ const initialCards = [
 
   const popupOpenBtnElement = document.querySelector('.profile__edit-button');
   const popupOpenBtnElAddPhoto = document.querySelector('.profile__add-button');
+  const popupOpenBtnElUpdateAvatar = document.querySelector('.profile__avatar-button');
   const templateSelector = '.card-template';
   const elementsListSelector = '.elements__list';
   const popupImageSelector = '.popup_type_image';
   const popupProfileSelector = '.popup_type_profile';
   const popupAddPhotoSelector = '.popup_type_add-photo';
+  const popupUpdateAvatarSelector = '.popup_type_update-avatar';
+  const popupCardDeleteSelector = '.popup_type_card-delete';
 
   const profileInfoConfig = {
     nameProfileSelector: '.profile__name',
@@ -58,11 +61,14 @@ const initialCards = [
     initialCards,
     popupOpenBtnElement,
     popupOpenBtnElAddPhoto,
+    popupOpenBtnElUpdateAvatar,
     templateSelector,
     elementsListSelector,
     popupImageSelector,
     popupProfileSelector,
     popupAddPhotoSelector,
+    popupUpdateAvatarSelector,
+    popupCardDeleteSelector,
     profileInfoConfig,
     validationConfig,
     formValidators
