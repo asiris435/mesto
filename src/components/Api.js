@@ -19,10 +19,7 @@ export default class Api {
                 authorization: this._authorization
               }
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        });
+        .then(this._checkResponse);
     }
 
     getInitialCards () {
@@ -31,10 +28,7 @@ export default class Api {
                 authorization: this._authorization
               }
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        });
+        .then(this._checkResponse);
     }
 
     setUserInfo (data) {
@@ -46,10 +40,7 @@ export default class Api {
                 about: data.job
             })
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        });
+        .then(this._checkResponse);
     }
 
     setNewAvatar (data) {
@@ -60,10 +51,7 @@ export default class Api {
                 avatar: data.linkAvatar
             })
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        });
+        .then(this._checkResponse);
     }
 
     addPhoto (data) {
@@ -75,10 +63,7 @@ export default class Api {
                 link: data.link
             })
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        }); 
+        .then(this._checkResponse); 
     }
 
     addLike (cardId) {
@@ -88,10 +73,7 @@ export default class Api {
                 authorization: this._authorization
             }
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        }); 
+        .then(this._checkResponse);
     }
 
     deleteLike (cardId) {
@@ -101,10 +83,7 @@ export default class Api {
                 authorization: this._authorization
             }
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        }); 
+        .then(this._checkResponse);
     }
 
     deleteCard (cardId) {
@@ -114,9 +93,6 @@ export default class Api {
                 authorization: this._authorization
             }
         })
-        .then(this._checkResponse)
-        .catch((err) => {
-            console.log(err);
-        }); 
+        .then(this._checkResponse); 
     }
 }
