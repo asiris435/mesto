@@ -4,7 +4,7 @@
     grid-template-columns: 67% 1fr;
     grid-template-areas:
     'title like'
-    'title counter'; 
+    'title counter';
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 10px 10px;
