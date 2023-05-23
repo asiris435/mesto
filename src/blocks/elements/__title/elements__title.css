@@ -9,6 +9,5 @@
     overflow: hidden;
     width: 67%;
     margin: 0;
-    align-items: center;
-    justify-content: space-between;
+    grid-area: title;
 }

@@ -6,8 +6,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupCardDelete from '../components/PopupCardDelete.js';
+import Api from '../components/Api.js';
 import {
-  initialCards,
   popupOpenBtnElement,
   popupOpenBtnElAddPhoto,
   popupOpenBtnElUpdateAvatar,
@@ -25,43 +25,104 @@ import {
 
 
 function createCard (element) {
-  const card = new Card (element, templateSelector, popupWithImage.open, popupCardDelete.open);
+  const card = new Card (element, templateSelector, popupWithImage.open, popupCardDelete.open, (likeElement, cardId) => {
+    if (likeElement.classList.contains('elements__like-button_active')) {
+      api.deleteLike(cardId)
+      .then((res) => {
+        card.toggleLike(res.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+    })
+    } else {
+      api.addLike(cardId)
+      .then((res) => {
+        card.toggleLike(res.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+    })
+    }
+  });
   return card.generateCard();
 }
 
 
-const popupCardDelete = new PopupCardDelete (popupCardDeleteSelector, (element) => {
-  element.removeCard();
-  popupCardDelete.close();
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
+  headers: {
+    authorization: '2715081b-0de1-4113-a2a5-4588462954ff',
+    'Content-Type': 'application/json'
+  }
+});
+
+const popupCardDelete = new PopupCardDelete (popupCardDeleteSelector, ({ element, cardId }) => {
+  api.deleteCard(cardId)
+  .then(() => {
+    element.removeCard();
+    popupCardDelete.close();
+  })
+  .catch((err) => {
+    console.log(err);
+})
+  .finally(() => {
+    popupCardDelete.setupDefaultText();
+  });
 }); 
 popupCardDelete.setEventListeners();
 
 const popupWithImage = new PopupWithImage (popupImageSelector);
 popupWithImage.setEventListeners();
 
-const section = new Section ({
-  items: initialCards,
-  renderer: (data) => {
-    section.addItem(createCard(data));
-  }
-}, elementsListSelector);
-section.addCardFromArray();
+const section = new Section ((data) => {
+    section.addItem(createCard(data))
+  }, elementsListSelector);
 
 const userInfo = new UserInfo (profileInfoConfig);
 
 const popupProfile = new PopupWithForm (popupProfileSelector, (data) => {
-  userInfo.setUserInfo(data);
+  api.setUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo({ username: res.name, job: res.about, avatar: res.avatar });
+      popupProfile.close();
+    })
+    .catch((err) => {
+      console.log(err);
+  })
+    .finally(() => {
+      popupProfile.setupDefaultText();
+    });
 });
 popupProfile.setEventListeners();
 
 const popupAddPhoto = new PopupWithForm (popupAddPhotoSelector, (data) => {
-  section.addItem(createCard(data));
+  Promise.all([api.getUserProfileInfo(), api.addPhoto(data)])
+  .then(([userData, cardData]) => {
+    cardData.myId = userData._id;
+    section.addItem(createCard(cardData));
+    popupAddPhoto.close();
+  })
+  .catch((err) => {
+    console.log(err);
+})
+  .finally(() => {
+    popupAddPhoto.setupDefaultText();
+  });
 });
 popupAddPhoto.setEventListeners();
 
 const popupUpdateAvatar = new PopupWithForm (popupUpdateAvatarSelector, (data) => {
-  document.querySelector('.profile__avatar').src = data.updateAvatar;
-  popupUpdateAvatar.close();
+  api.setNewAvatar(data)
+  .then((res) => {
+    userInfo.setUserInfo({ username: res.name, job: res.about, avatar: res.avatar });
+    popupUpdateAvatar.close();
+  })
+  .catch((err) => {
+    console.log(err);
+})
+  .finally(() => {
+    popupUpdateAvatar.setupDefaultText();
+  });
 });
 popupUpdateAvatar.setEventListeners();
 
@@ -88,4 +149,17 @@ popupOpenBtnElAddPhoto.addEventListener('click', () => {
 popupOpenBtnElUpdateAvatar.addEventListener('click', () => {
   formValidators.updateAvatar.resetValidation();
   popupUpdateAvatar.open();
-})
+});
+
+
+Promise.all([api.getUserProfileInfo(), api.getInitialCards()])
+  .then(([userData, cardData]) => {
+    cardData.forEach((item) => {
+      item.myId = userData._id;
+    })
+    userInfo.setUserInfo({ username: userData.name, job: userData.about, avatar: userData.avatar });
+    section.addCardFromArray(cardData.reverse());
+  })
+  .catch((err) => {
+    console.log(err);
+});
